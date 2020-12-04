@@ -15,6 +15,7 @@ function compose_email() {
 
   // Show compose view and hide other views
   document.querySelector('#emails-view').style.display = 'none';
+  document.querySelector('#email-card').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'block';
 
   // Clear out composition fields
@@ -27,10 +28,33 @@ function load_mailbox(mailbox) {
   
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
+  document.querySelector('#email-card').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';
 
   // Show the mailbox name
   document.querySelector('#emails-view').innerHTML = `<h3>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h3>`;
+
+  fetching_data(mailbox);
+
+}
+
+function fetching_data(mailbox){
+  
+  // Clearing div email-card 
+  document.getElementById("email-card").innerHTML = "";
+  // Getting the inbox emails
+  fetch(`/emails/${mailbox}`)
+  .then(response => response.json())
+  .then(emails => {
+  // Print emails
+  console.log(emails);
+  // Making div card of email
+  emails_show(emails)
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
 }
 
 function send_mail(){
@@ -68,4 +92,33 @@ function send_mail(){
   });
 
   return false
+}
+
+
+function emails_show(emails){
+  emails.forEach(email => {
+
+    var parent_div_node = document.createElement("div");
+    
+    var p_node_0 = document.createElement("P");
+    var textnode_sender = document.createTextNode(email.sender);
+    p_node_0.appendChild(textnode_sender);
+    parent_div_node.appendChild(p_node_0);
+
+    var p_node_1 = document.createElement("P");
+    var textnode_subject = document.createTextNode(email.subject);
+    p_node_1.appendChild(textnode_subject);
+    parent_div_node.appendChild(p_node_1);
+
+    var p_node_2 = document.createElement("P");
+    var textnode_timestamp = document.createTextNode(email.timestamp);
+    p_node_2.appendChild(textnode_timestamp);
+    parent_div_node.appendChild(p_node_2);
+
+    document.querySelector('#email-card').append(parent_div_node);
+    parent_div_node.classList.add('email-card-style');
+    
+  });
+
+  return null;
 }
