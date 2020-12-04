@@ -8,6 +8,8 @@ textarea {
 }
 
 .email-card-style{
-    background-color: rgb(119, 157, 190);
     display: flex;
+    margin: 10px;
+    text-align: center;
+    justify-content: space-around;
 }

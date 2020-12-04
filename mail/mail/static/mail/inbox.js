@@ -117,7 +117,14 @@ function emails_show(emails){
 
     document.querySelector('#email-card').append(parent_div_node);
     parent_div_node.classList.add('email-card-style');
-    
+
+    if(email.read == false){
+      parent_div_node.style.backgroundColor = "white"; 
+    }
+    else if(email.read == true){
+      parent_div_node.style.backgroundColor = "gray"; 
+    }
+
   });
 
   return null;
