@@ -12,4 +12,6 @@ textarea {
     margin: 10px;
     text-align: center;
     justify-content: space-around;
+    align-items: baseline;
+    cursor: pointer;
 }

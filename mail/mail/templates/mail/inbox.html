@@ -16,6 +16,29 @@
     <div id="email-card">
     </div>
 
+    <div id="email-content-view">
+        <form id="email-content-view-form">
+            <div class="form-group">
+                From: <input disabled class="form-control" id="email-content-view-from">
+            </div>
+            <div class="form-group">
+                To: <input disabled class="form-control" value="{{ request.user.email }}">
+                <div class="error" id="error-compose-form">
+                </div>
+            </div>
+            <div class="form-group">
+                Time: <input disabled class="form-control" id="email-content-time" placeholder="Time">
+            </div>
+            <div class="form-group">
+                Subject: <input disabled class="form-control" id="email-content-subject" placeholder="Subject">
+            </div>
+            <textarea disabled class="form-control" id="email-content-body" placeholder="Body"></textarea>
+            <input type="submit" class="btn btn-primary" id="replay-email-content" value="Reply"/>
+            
+            <button type="button" class="btn" id="archive-email-content"></button>
+        </form>
+    </div>
+
     <div id="compose-view">
         <h3>New Email</h3>
         <form id="compose-form">
@@ -31,7 +54,7 @@
                 <input class="form-control" id="compose-subject" placeholder="Subject">
             </div>
             <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
-            <input type="submit" class="btn btn-primary"/>
+            <input type="submit" class="btn btn-primary" value="Submit"/>
         </form>
     </div>
 {% endblock %}
