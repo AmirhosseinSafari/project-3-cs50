@@ -174,7 +174,7 @@ function emails_show(emails, mailbox){
     
     // Adding on click method to hold email card
     parent_div_node.onclick = function(){
-      onclick_email(email);
+      onclick_email(email, mailbox);
     }
     
     document.querySelector('#email-card').append(parent_div_node);
@@ -211,7 +211,7 @@ function emails_show(emails, mailbox){
         
         // Adding on click method to hold email card
         parent_div_node.onclick = function(){
-          onclick_email(email);
+          onclick_email(email, mailbox);
         }
         
         document.querySelector('#email-card').append(parent_div_node);
@@ -231,13 +231,18 @@ function emails_show(emails, mailbox){
   return null;
 }
 
-function onclick_email(email){
+function onclick_email(email, mailbox){
 
   document.querySelector('#emails-view').style.display = 'none';
   document.querySelector('#email-card').style.display = 'none';
   document.querySelector('#compose-view').style.display = 'none';
   document.querySelector('#compose-view-reply').style.display = 'none';
   document.querySelector('#email-content-view').style.display = 'block';
+
+  if (mailbox == 'sent'){
+    document.querySelector('#replay-email-content').style.display = 'none';
+    document.querySelector('#archive-email-content').style.display = 'none';
+  }
 
   input_from = document.querySelector('#email-content-view-from');
   subject_email = document.querySelector('#email-content-subject');
