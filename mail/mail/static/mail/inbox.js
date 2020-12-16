@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
   load_mailbox('inbox');
 });
 
-
 function compose_email() {
 
   // Show compose view and hide other views
@@ -93,7 +92,8 @@ function send_mail(){
 
       if(result.error){
       // Showing error msg
-        document.querySelector("#error-compose-form").innerHTML = `<p>${result.error}</p>`;
+        document.querySelector('#error-compose-form').innerHTML = `<p>${result.error}</p>`;
+        //console.log(document.querySelector('#error-compose-form'));
       }
 
   })
@@ -243,8 +243,13 @@ function onclick_email(email, mailbox){
     document.querySelector('#replay-email-content').style.display = 'none';
     document.querySelector('#archive-email-content').style.display = 'none';
   }
+  else{
+    document.querySelector('#replay-email-content').style.display = 'inline-block';
+    document.querySelector('#archive-email-content').style.display = 'inline-block';
+  }
 
   input_from = document.querySelector('#email-content-view-from');
+  input_to = document.querySelector('#email-content-view-form-to');
   subject_email = document.querySelector('#email-content-subject');
   textarea_email = document.querySelector('#email-content-body');
   time_email = document.querySelector('#email-content-time');
@@ -259,6 +264,9 @@ function onclick_email(email, mailbox){
     console.log(email);
     // ... do something else with email ...
     input_from.value = email.sender;
+    if(mailbox == 'sent'){
+      input_to.value = email.recipients;
+    }
     subject_email.value = email.subject;
     time_email.value = email.timestamp;
     textarea_email.innerHTML = email.body;
