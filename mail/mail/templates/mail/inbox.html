@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 To: <input disabled class="form-control" id="email-content-view-form-to" value="{{ request.user.email }}">
-                <div class="error" id="error-compose-form">
+                <div class="error" id="error-compose-form-view">
                 </div>
             </div>
             <div class="form-group">
@@ -49,13 +49,13 @@
             </div>
             <div class="form-group">
                 To: <input id="compose-recipients" class="form-control">
-                <div class="error" id="error-compose-form">
+                <div class="error" id="error-compose-form_new">
                 </div>
             </div>
             <div class="form-group">
                 <input class="form-control" id="compose-subject" placeholder="Subject">
             </div>
-            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <textarea class="form-control" id="compose-body" placeholder="Write your mail..."></textarea>
             <input type="submit" class="btn btn-primary" id="reply-email-compose" value="Submit"/>
         </form>
     </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="form-group">
                 To: <input disabled id="compose-recipients-reply" class="form-control">
-                <div class="error" id="error-compose-form">
+                <div class="error" id="error-compose-form-reply">
                 </div>
             </div>
             <div class="form-group">

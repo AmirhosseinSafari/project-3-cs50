@@ -92,7 +92,7 @@ function send_mail(){
 
       if(result.error){
       // Showing error msg
-        document.querySelector('#error-compose-form').innerHTML = `<p>${result.error}</p>`;
+        document.querySelector('#error-compose-form_new').innerHTML = `<p>${result.error}</p>`;
         //console.log(document.querySelector('#error-compose-form'));
       }
 
@@ -130,7 +130,7 @@ function send_reply(){
 
       if(result.error){
       // Showing error msg
-        document.querySelector("#error-compose-form").innerHTML = `<p>${result.error}</p>`;
+        document.querySelector("#error-compose-form-reply").innerHTML = `<p>${result.error}</p>`;
       }
 
   })
